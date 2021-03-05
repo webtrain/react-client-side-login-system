@@ -26,7 +26,7 @@ const Login = () => {
         <div className="container">
           <div className="section">
             <div className="columns is-6-tablet is-centered">
-              <form className="box column is-5-tablet" onSubmit={handleSubmit}>
+              <form className="box column is-one-third" onSubmit={handleSubmit}>
                 <h1 className="title is-4 has-text-centered mt-2">Login</h1>
                 <div className="field">
                   <label className="label">Email</label>
