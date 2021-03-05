@@ -60,12 +60,14 @@ const Header = () => {
                 <div className="buttons">
                   {authToken ? (
                     <>
-                      {!location.pathname.includes('album') && <button className="button is-primary" onClick={() =>showUserDetails(userInfo.id)}>
-                        <span className="icon">
-                          <i className="fas fa-user"></i>
-                        </span>
-                        <strong>UserDetails</strong>
-                      </button>}
+                      {!location.pathname.includes('album') && (
+                        <button className="button is-primary" onClick={() => showUserDetails(userInfo.id)}>
+                          <span className="icon">
+                            <i className="fas fa-user"></i>
+                          </span>
+                          <strong>{userInfo.name}</strong>
+                        </button>
+                      )}
 
                       <button to="/login" className="button is-primary" onClick={handleLogout}>
                         <span className="icon">
