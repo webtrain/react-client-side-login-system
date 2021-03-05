@@ -16,7 +16,7 @@ const Header = () => {
   const authToken = sessionStorage.getItem('loggedIn');
 
   useEffect(() => {
-    authToken ? history.push('/dashboard') : history.push('/');
+    authToken ? history.push('/dashboard') : history.push('/login');
   }, [authToken, dispatch, history]);
 
   const handleLogout = () => {
