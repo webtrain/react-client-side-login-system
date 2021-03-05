@@ -11,7 +11,7 @@ const Register = () => {
     AUTH,
   } = useContext(AppContext);
 
-  const history = useHistory()
+  const history = useHistory();
 
   const [registerInput, setRegisterInput] = useState({ name: '', email: '', password: '', cf_password: '' });
 
@@ -27,9 +27,9 @@ const Register = () => {
     e.preventDefault();
     register(registerInput, users, dispatch);
   };
-
   useEffect(() => {
     registeredUser && history.push('/login');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [registeredUser]);
 
   return (

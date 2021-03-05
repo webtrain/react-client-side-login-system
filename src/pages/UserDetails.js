@@ -9,7 +9,7 @@ const UserDetails = () => {
     loading,
     error,
   } = useContext(AppContext);
-  console.log(userInfo);
+  
 
   return (
     <>
