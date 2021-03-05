@@ -41,7 +41,6 @@ const authReducer = (state, { type, payload }) => {
         error: false,
         success: true,
         msg: { head: payload.msg.head, body: payload.msg.body },
-        registeredUser: payload.user,
       };
     case AUTH.LOGIN_SUCCESS:
       return {

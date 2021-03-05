@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 const Register = () => {
   const {
-    state: { alert, loading, registeredUser },
+    state: { alert, loading, success },
     dispatch,
     users,
     AUTH,
@@ -28,9 +28,9 @@ const Register = () => {
     register(registerInput, users, dispatch);
   };
   useEffect(() => {
-    registeredUser && history.push('/login');
+    success && history.push('/login');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [registeredUser]);
+  }, [success]);
 
   return (
     <>
