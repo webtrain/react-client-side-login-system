@@ -18,7 +18,7 @@ const AlbumDetails = () => {
         <div className="container">
           <div className="section">
             <Link to="/dashboard" className="button is-light">
-              <i class="fas fa-angle-left mr-2"></i>
+              <i className="fas fa-angle-left mr-2"></i>
               Back
             </Link>
           </div>
@@ -28,7 +28,7 @@ const AlbumDetails = () => {
                 <div className="card">
                   <div className="card-header">
                     <div className="card-header-icon">
-                      <i class="fas fa-bookmark has-text-primary is-size-3"></i>
+                      <i className="fas fa-bookmark has-text-primary is-size-3"></i>
                     </div>
                     <div className="card-header-title">
                       <h1 className="title is-2">{album.title}</h1>

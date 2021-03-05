@@ -19,28 +19,13 @@ export const login = async (usersList, userData, dispatch) => {
     if (userExists.password !== userData.password)
       return dispatch({ type: AUTH.LOGIN_FAIL, payload: { head: 'Error', body: 'Email / Password is not match' } });
 
-    const user = {
-      id: userExists.id,
-      name: userExists.name,
-      username: userExists.username,
-      address: {
-        city: userExists.address.city,
-        street: userExists.address.street,
-        suite: userExists.address.suite,
-        zipcode: userExists.address.zipcode,
-      },
-      phone: userExists.phone,
-      website: userExists.website,
-      email: userExists.email,
-    };
-
     dispatch({
       type: AUTH.LOGIN_SUCCESS,
-      payload: { msg: { head: 'Success', body: 'Success Login' }, userInfo: user },
+      payload: { msg: { head: 'Success', body: 'Success Login' }, userInfo: userExists },
     });
     const token = generateToken(userExists.id);
     sessionStorage.setItem('loggedIn', JSON.stringify(token));
-    localStorage.setItem('userInfo', JSON.stringify(user));
+    localStorage.setItem('userInfo', JSON.stringify(userExists));
   } else {
     dispatch({ type: AUTH.LOGIN_FAIL, payload: { head: 'Error', body: 'User is not exists' } });
   }

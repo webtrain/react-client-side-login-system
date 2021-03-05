@@ -1,23 +1,23 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 import { register } from '../app/actions/authActions';
-import { useHistory } from 'react-router-dom';
 
 const Register = () => {
   const {
-    state: { alert, loading, userInfo },
+    state: { alert, loading },
     dispatch,
     users,
+    AUTH,
   } = useContext(AppContext);
 
   const [registerInput, setRegisterInput] = useState({ name: '', email: '', password: '', cf_password: '' });
-
-  const history = useHistory();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     setRegisterInput({ ...registerInput, [name]: value });
+
+    dispatch({ type: AUTH.RESET });
   };
 
   const handleSubmit = (e) => {
@@ -37,7 +37,7 @@ const Register = () => {
                 <div className="control">
                   <input className="input" type="text" name="name" placeholder="Your name" onChange={handleChange} />
                 </div>
-                <small>{alert && alert.name && alert.name}</small>
+                <small className="has-text-danger">{alert && alert.name && alert.name}</small>
               </div>
 
               <div className="field">
@@ -45,7 +45,7 @@ const Register = () => {
                 <div className="control">
                   <input className="input" type="email" name="email" placeholder="Your email" onChange={handleChange} />
                 </div>
-                <small>{alert && alert.email && alert.email}</small>
+                <small className="has-text-danger">{alert && alert.email && alert.email}</small>
               </div>
 
               <div className="field">
@@ -59,7 +59,7 @@ const Register = () => {
                     onChange={handleChange}
                   />
                 </div>
-                <small>{alert && alert.password && alert.password}</small>
+                <small className="has-text-danger">{alert && alert.password && alert.password}</small>
               </div>
 
               <div className="field">
@@ -73,7 +73,7 @@ const Register = () => {
                     onChange={handleChange}
                   />
                 </div>
-                <small>{alert && alert.cf_password && alert.cf_password}</small>
+                <small className="has-text-danger">{alert && alert.cf_password && alert.cf_password}</small>
               </div>
 
               <button className={`button is-primary is-fullwidth ${loading ? 'is-loading' : ''}`}>Sign in</button>

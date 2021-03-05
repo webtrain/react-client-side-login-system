@@ -13,7 +13,7 @@ const Message = ({ variant, message, loginPage }) => {
   }, [dispatch, AUTH.RESET]);
 
   return (
-    <div className="column is-offset-8">
+    <div className="alert-box column is-offset-8">
       <div className={`message is-${variant}`}>
         <div className="message-header">
           <p>{head}</p>

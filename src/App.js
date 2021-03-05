@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import UserDetails from './pages/UserDetails';
 import Home from './pages/Home';
 import Header from './components/Header';
 import AlbumDetails from './pages/AlbumDetails';
@@ -29,6 +30,7 @@ function App() {
 
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <PrivateRoute path="/album/:id" component={AlbumDetails} />
+          <PrivateRoute path="/user/:id" component={UserDetails} />
         </Switch>
       </main>
     </Router>

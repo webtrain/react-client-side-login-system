@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { logout } from '../app/actions/authActions';
 import { AppContext } from '../context/AppContext';
 import Message from '../components/Message';
@@ -8,19 +8,25 @@ const Header = () => {
   const [isActive, setIsactive] = useState(false);
 
   const history = useHistory();
+  const location = useLocation();
+  
 
-  const { state, dispatch } = useContext(AppContext);
+  const { state, dispatch, state: {userInfo} } = useContext(AppContext);
 
   const authToken = sessionStorage.getItem('loggedIn');
 
   useEffect(() => {
-    if (authToken) history.push('/dashboard');
+    authToken ? history.push('/dashboard') : history.push('/');
   }, [authToken, dispatch, history]);
 
   const handleLogout = () => {
     logout(dispatch);
     history.push('/login');
   };
+
+   const showUserDetails = (id) => {
+     history.push(`user/${id}`);
+   };
 
   return (
     <>
@@ -54,6 +60,13 @@ const Header = () => {
                 <div className="buttons">
                   {authToken ? (
                     <>
+                      {!location.pathname.includes('album') && <button className="button is-primary" onClick={() =>showUserDetails(userInfo.id)}>
+                        <span className="icon">
+                          <i className="fas fa-user"></i>
+                        </span>
+                        <strong>UserDetails</strong>
+                      </button>}
+
                       <button to="/login" className="button is-primary" onClick={handleLogout}>
                         <span className="icon">
                           <i className="fas fa-sign-out-alt"></i>
