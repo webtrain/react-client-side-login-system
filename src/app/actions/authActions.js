@@ -41,7 +41,7 @@ export const logout = (dispatch) => {
 
 export const register = async (userData, usersList, dispatch) => {
   try {
-     dispatch({ type: AUTH.REQUEST });
+    dispatch({ type: AUTH.REQUEST });
 
     const { errLength, errorMsg } = validateInput(userData);
 
@@ -77,7 +77,6 @@ export const register = async (userData, usersList, dispatch) => {
         type: AUTH.REGISTER_SUCCESS,
         payload: { msg: { head: 'Success', body: 'Success Register' }, user: data },
       });
-      window.location.push('/')
     }
   } catch (err) {
     console.log(err);

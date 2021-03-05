@@ -1,14 +1,17 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 import { register } from '../app/actions/authActions';
+import { useHistory } from 'react-router-dom';
 
 const Register = () => {
   const {
-    state: { alert, loading },
+    state: { alert, loading, registeredUser },
     dispatch,
     users,
     AUTH,
   } = useContext(AppContext);
+
+  const history = useHistory()
 
   const [registerInput, setRegisterInput] = useState({ name: '', email: '', password: '', cf_password: '' });
 
@@ -24,6 +27,10 @@ const Register = () => {
     e.preventDefault();
     register(registerInput, users, dispatch);
   };
+
+  useEffect(() => {
+    registeredUser && history.push('/login');
+  }, [registeredUser]);
 
   return (
     <>
