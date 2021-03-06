@@ -14,8 +14,8 @@ const DashboardAlbum = ({ albumList, start, end }) => {
     <>
       {albumList.data.slice(start, end).map((album) => (
         <div className="column is-one-third" key={album.id}>
-          <div className="card mb-2 p-2 is-size-5">
-            <div className="card-body pb-2">
+          <div className="card is-flex is-flex-direction-column mb-2 p-2 is-size-5">
+            <div className="card-content is-flex-grow-1 px-2 ">
               <p className="mb-2">Id: {album.id}</p>
               <p className="is-size-6">Title: {album.title}</p>
             </div>
