@@ -11,13 +11,13 @@ const Header = () => {
   const location = useLocation();
   
 
-  const { state, dispatch, state: {userInfo} } = useContext(AppContext);
+  const { state, dispatch, state: {success, userInfo} } = useContext(AppContext);
 
   const authToken = sessionStorage.getItem('loggedIn');
 
   useEffect(() => {
     authToken ? history.push('/dashboard') : history.push('/login');
-  }, [authToken, dispatch, history]);
+  }, [authToken, success, history]);
 
   const handleLogout = () => {
     logout(dispatch);
