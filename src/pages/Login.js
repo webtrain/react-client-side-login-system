@@ -4,7 +4,7 @@ import { login } from '../app/actions/authActions';
 
 const Login = () => {
   const { state, dispatch, users } = useContext(AppContext);
-  const {loading, userInfo} = state;
+  const { loading, userInfo } = state;
 
   const [loginInput, setLoginInput] = useState({ email: '', password: '' });
 
@@ -27,7 +27,9 @@ const Login = () => {
           <div className="section">
             <div className="columns is-6-tablet is-centered">
               <form className="box column is-one-third" onSubmit={handleSubmit}>
-                <h1 className="title is-4 has-text-centered mt-2">Login</h1>
+                <h1 className="title is-4 has-text-centered mt-2" data-testid="login">
+                  Login
+                </h1>
                 <div className="field">
                   <label className="label">Email</label>
                   <div className="control">
@@ -38,6 +40,7 @@ const Login = () => {
                       placeholder="e.g. alex@example.com"
                       value={loginInput.email}
                       onChange={handleChange}
+                      data-testid="email"
                     />
                   </div>
                 </div>
@@ -52,11 +55,17 @@ const Login = () => {
                       placeholder="********"
                       value={loginInput.password}
                       onChange={handleChange}
+                      data-testid="password"
                     />
                   </div>
                 </div>
 
-                <button className={`button is-primary is-fullwidth ${loading ? 'is-loading' : ''}`}>Sign in</button>
+                <button
+                  className={`button is-primary is-fullwidth ${loading ? 'is-loading' : ''}`}
+                  data-testid="loginButton"
+                >
+                  Sign in
+                </button>
               </form>
             </div>
           </div>

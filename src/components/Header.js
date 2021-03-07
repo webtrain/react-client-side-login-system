@@ -11,7 +11,8 @@ const Header = () => {
   const location = useLocation();
   
 
-  const { state, dispatch, state: {success, userInfo} } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
+  const { success, userInfo } = state;
 
   const authToken = sessionStorage.getItem('loggedIn');
 

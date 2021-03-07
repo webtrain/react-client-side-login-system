@@ -17,4 +17,4 @@ const AppContextProvider = ({ children }) => {
   return <AppContext.Provider value={data}>{children}</AppContext.Provider>;
 };
 
-export default React.memo(AppContextProvider);
+export default AppContextProvider;
